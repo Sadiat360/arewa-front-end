@@ -18,7 +18,7 @@ Arewa
 
 ### Overview
 
-Arewa is a web app for users to find beauty products that suits their needs.
+Arewa is an e-commerce web app where users can find beauty products that suits their needs.
 ### Problem Statement 
 Most beauty E-commerce websites provides a limited way to interact with the products (e.g., viewing only product information without customer reviews or ratings).
 Complicated shopping experience that does not allow for easy addition, removal, and purchasing of products.
