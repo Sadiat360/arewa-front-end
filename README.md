@@ -30,13 +30,13 @@ Complicated shopping experience that does not allow for easy addition, removal, 
 ### Usage  
  The goal is to develop a web app that:
 1. Allows users to easily search for beauty products, filter results, and view product reviews and ratings.
-2. Enables customers to add/remove products from their cart and securely checkout.
+2. Enables users to add/remove products from their cart and securely checkout.
 3. Provides price comparison features and recommends similar products.
 
 
 ## Features 
 
-- As a user, i want   a beauty product website that has---search bar or filter
+- As a user i want   a beauty product website that has---search bar or filter
 - As s user i  want to be able to read product views------product reviews/ratinsg.
 - As a user i want to add product to cart and checkout or remove product------add item/delete item
 - As a user i want to check Price Comparison  -----recommended product?
@@ -85,7 +85,6 @@ Complicated shopping experience that does not allow for easy addition, removal, 
 - Register/LogIn
 - Product search &Filters
 - Product Cart page
-- Card/Download
 - Price Comparison
 - Quiz page
 - Add a review
@@ -109,7 +108,7 @@ Response:
 [
   {
     "id": 1,
-    "name": "To the Brave You",
+    "name": "Orimore",
     "description":"bold lips shimmer lip gloss",
     "price":"$40.50"
     "ratings": "200"
