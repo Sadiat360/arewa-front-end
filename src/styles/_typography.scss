@@ -1,0 +1,33 @@
+@use './mixins' as *;
+@use './variables' as *;
+
+@font-face {
+    font-family: 'UniversLTStd-Black.otf';
+    src: url(../assets/fonts/univers-lt-std/UniversLTStd-Black.otf) format('0tf1');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'TT-Chocolates Light.otf';
+    src: url(../assets/fonts/tt-chocolates/TT\ Chocolates\Light.otf) format('otf1');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'TT-Chocolates Regular.otf';
+    src: url(../assets/fonts/tt-chocolates/TT\ Chocolates\ Regular.otf) format('otf2');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'TT-Chocolates Medium.otf';
+    src: url(../assets/fonts/tt-chocolates/TT\ Chocolates\Medium.otf.otf) format('otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'TT-Chocolates Bold.otf';
+    src: url(../assets/fonts/tt-chocolates/TT\ Chocolates\Bold.otf) format('otf1');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'TT-Chocolates ExtraBold.otf';
+    src: url(../assets/fonts/tt-chocolates/TT\ Chocolates\ ExtraBold.otf) format('0tf2');
+    font-weight: 700;
+}

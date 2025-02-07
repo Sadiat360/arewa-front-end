@@ -1,0 +1,38 @@
+@use './variables' as * ;
+
+@mixin tablet {
+    @media screen and (min-width: 700px){
+     @content;
+    }
+    
+ }
+ 
+ @mixin desktop {
+     @media screen and (min-width: 1280px) {
+       @content;
+     }
+ }
+ 
+ @mixin flex-center($direction){
+   display: flex;
+   flex-direction: $direction;
+ }
+ @mixin logo {
+   width: 60px;
+   text-decoration: none;
+   padding: 1rem;
+ }
+ @mixin logo-text-mob{
+   font-size: 2rem;
+   text-decoration: none;
+   color: $Arewa-brown;
+   font-family: 'univers-lt-std';
+   cursor: pointer;
+ }
+ @mixin logo-text {
+   font-size: 2rem;
+   text-decoration: none;
+   color: $secondary-color;
+   font-family: 'Lexend';
+   cursor: pointer;
+ }
