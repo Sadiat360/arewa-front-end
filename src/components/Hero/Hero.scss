@@ -1,0 +1,46 @@
+@use '/src/styles/global' as *;
+@use '/src/styles/mixins' as *;
+@use '/src/styles/typography' as *;
+@use '/src/styles/variables' as *;
+
+.hero{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+
+    &-image{
+        width: 100%;
+    }
+    &-content{
+        width: 45%;
+        position: absolute;
+        top: 40px;
+        left: 20px;
+
+        &__text{
+            color: $white-color;
+            font-family: 'univers-lt-std';
+            font-style: italic;
+        }
+        &__phrase{
+            color: $white-color;
+
+        }
+        @include tablet{
+            width: 30%;
+            top: 20%;
+        }
+    }
+    &-btn{
+        width: 238px;
+        background-color: $Arewa-brown;
+        color: $white-color;
+        padding: 8px 20px 8px 20px;
+        border: 2px solid $Arewa-brown;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+}

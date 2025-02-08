@@ -109,8 +109,9 @@ Response:
 [
   {
     "id": 1,
-    "name": "To the Brave You",
-    "description":"bold lips shimmer lip gloss",
+    "photo": "/image",
+    "name": "Lips high shimmer",
+    "description":"bold diva shimmer lip gloss",
     "price":"$40.50"
     "ratings": "200"
   },

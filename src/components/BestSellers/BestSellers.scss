@@ -1,0 +1,80 @@
+@use '/src/styles/global' as *;
+@use '/src/styles/mixins' as *;
+@use '/src/styles/typography' as *;
+@use '/src/styles/variables' as *;
+
+
+.bestSeller{
+    width: 100%;
+    align-items: center;
+    margin-top: 5rem;
+    &-content{
+        width: 90%;
+        @include tablet{
+            width: 50%;
+        }
+    }
+
+    &-heading{
+        text-align: center;
+        color: $Arewa-black;
+    }
+    &-article{
+       @extend .bestSeller-heading;
+
+    }
+    &-card{
+        width: 300px;
+        height: 400px;
+        background-color: $white-color;
+        border-radius: 5px;
+        @include flex-center(column);
+        @include box-shadow;
+        
+        
+
+    }
+    &-image__wrap{
+        width: 100%;
+        height: 70%;
+    }
+    &-image{
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    &-item{
+        width: 50%;
+        @include flex-center(column);
+        list-style: none;
+        align-items: flex-start;
+        margin-left: 0;
+    }
+    &-container{
+        width: 100%;
+        @include flex-center(row);
+        justify-content: space-between;
+
+    }
+    
+}
+.react-multi-carousel-list{
+    width: 90%;
+    margin-top: 2rem;
+    @include tablet{
+        width: 80%;
+
+    }
+}
+.react-multi-carousel-item{
+    // for mobile
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    
+    @include tablet{
+        width: 310px;
+
+
+    }
+}

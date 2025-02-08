@@ -4,6 +4,19 @@
 @use '/src/styles/variables' as *;
 
 .layout{
-    @include flex-center(row);
+    width: 100%;
    
+   &-container{
+    width: 100%;
+    @include flex-center(row);
+   }
+}
+.main{
+    width: 100%;
+
+}
+main.hidden{
+   
+    opacity: 0; /* Dim background when Sidebar or Cart is open */
+    pointer-events: none;
 }
