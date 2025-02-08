@@ -7,7 +7,7 @@ import BestSellerItem from '../BestSellerItem/BestSellerItem';
 
 
 
-function BestSellers(){
+function BestSellers(props){
     
     const [bestSeller, setBestSeller]= useState([]);
     const [loading, setLoading] = useState(true)
@@ -64,7 +64,7 @@ function BestSellers(){
                     <p>Loading best sellers...</p> // ✅ Show loading text while fetching data
                 ) : bestSeller.length > 0 ? (
                     bestSeller.map((item) => (
-                        <BestSellerItem key={item.id} bestSeller={item} />
+                        <BestSellerItem key={item.id} data={item} />
                     ))
                 ) : (
                     <p>No best sellers available.</p> // ✅ Show this if API returns an empty array

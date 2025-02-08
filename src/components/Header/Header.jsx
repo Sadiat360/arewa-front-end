@@ -32,6 +32,7 @@ function Header({toggleSideBar, toggleCart}){
                 <ul className="header-list__right">
                     <li className="header-item"><HeartSvg /></li>
                     <li  onClick={toggleCart}className="header-item"><CartSvg /></li>
+                   
                 </ul>
         
         </div>
