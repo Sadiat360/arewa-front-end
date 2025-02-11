@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function BestSellerItem(props){
 
     const {id, name,description,photo,rating,price, slug} = props.data
-    console.log('what is inside props.data',props.data)
+    // console.log('what is inside props.data',props.data)
     return(
         <div className="bestSeller-card">
              <div className="bestSeller-image__wrap">

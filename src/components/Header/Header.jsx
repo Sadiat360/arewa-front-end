@@ -4,7 +4,7 @@ import CartSvg from '../../svgs/CartSvg/CartSvg';
 import MenuSvg from '../../svgs/MenuSvg/MenuSvg';
 import SearchSvg from '../../svgs/SearchSvg/SearchSvg';
 import SideBar from '../SideBar/SideBar';
-import { useState } from 'react';
+import { Link} from 'react-router-dom';
 
 function Header({toggleSideBar, toggleCart}){
     // const [openSideBar, setOpenSideBar] = useState(false);
@@ -38,7 +38,10 @@ function Header({toggleSideBar, toggleCart}){
         </div>
        
         <div className="header-container">
-            <p className="header-logo">Arewa</p>
+           
+            <p className="header-logo"> <Link  className="header-logo" to='/'>Arewa </Link></p>
+           
+          
 
                 <ul className="header-list">
                 <li className="header-item"><HeartSvg /></li>
