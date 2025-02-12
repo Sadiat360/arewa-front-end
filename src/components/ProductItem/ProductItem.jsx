@@ -28,6 +28,7 @@ function ProductItem({details}){
             <img className="details-image" src={`http://localhost:5050/images/${details?.photo}`} alt={details?.name} />
             </div>
             <div className="details-content">
+                <div className="details-scroll">
                 <p className="p1">{details.tags}</p>
                 <div className="details-frame">
                     <div className="details-svg">
@@ -36,7 +37,6 @@ function ProductItem({details}){
                     <FilledRating/>
                     <FilledRating/>
                     <RatingSvg/>
-
                     </div>
                   
                   <div className="details-box">
@@ -57,18 +57,18 @@ function ProductItem({details}){
                 <h3>Details</h3>
                 <p className="p1">{details.details}</p>
                 <div className="details-ingredient">
-                <h3 className="h3">Ingredients</h3>
-                <button onClick={handleIngredientClick} className="p1">{openIngredient ? "-" : "+"}</button>
+                <h3 className="details-ingredient__text h3">Ingredients</h3>
+                <button onClick={handleIngredientClick} className="details-plusBtn p1">{openIngredient ? "-" : "+"}</button>
                 </div>
                  
-                 {openIngredient && ( <div>
+                 {openIngredient && ( <div className="details__list">
                     <p className="p1">{details.ingredients}</p>
                 </div>)}
 
                 <div className="details-ingredient">
 
-                <h3 className="h3">How to use</h3>
-                <button onClick={handleHowtoUseClick} className="p1">{openHowToUse ? "-" : "+"}</button>
+                <h3 className="details-ingredient__text h3">How to use</h3>
+                <button onClick={handleHowtoUseClick} className="details-plusBtn p1">{openHowToUse ? "-" : "+"}</button>
                 </div>
                 {openHowToUse && ( 
                     <ul>
@@ -79,21 +79,7 @@ function ProductItem({details}){
                    
                 </ul>
                )}
-               
-               
-               
-            {/* <ul className="details-list">
-             
-              
-              
-              <li>{details.rating}</li>
-              <li>{details.name}</li>
-              
-          
-             </ul> */}
-
-                
-
+                </div>
             </div>
            
             

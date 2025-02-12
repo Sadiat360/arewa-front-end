@@ -1,13 +1,38 @@
 import './ProductDetailsPage.scss'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductItem from '../../components/ProductItem/ProductItem.jsx'
+import ProductItem from '../../components/ProductItem/ProductItem.jsx';
+import block1 from '../../assets/images/block1.png'
+import block2 from '../../assets/images/block2.png'
+import block3 from '../../assets/images/block3.png'
+import block4 from '../../assets/images/block4.png';
+import FilledRating from '../../svgs/FilledRating/FilledRating.jsx';
+import RatingSvg from '../../svgs/RatingSvg/RatingSvg.jsx';
+import FormModal from '../../components/FormModal/FormModal.jsx'
 import axios from "axios";
 function ProductDetailsPage(props){
       const [details,setDetails] = useState({});
       const {slug} = useParams();
       console.log('what is id', slug)
-    //   const Details = slug;
+      const [openModal, setOpenModal] = useState(false);
+      const [closeModal, setCloseModal] = useState(false);
+      
+
+      function toggleModal(){
+        setOpenModal((prev)=> !prev)
+      }
+
+      // function toggleOpenModal(){
+      //      setOpenModal(!openModal)
+      //       if(openModal){
+      //         setCloseModal(true);
+      //       }
+      // }
+      // function toggleCloseModal(){
+      //   if(closeModal){
+      //     setOpenModal(true);
+      //   }
+      // }
 
       useEffect(()=>{
 
@@ -29,11 +54,66 @@ function ProductDetailsPage(props){
      
 
     return(
-       <section className="details">
-        
-                
+      <>
+          {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal}/>): null}
+          <section className="details">    
            <ProductItem  details={details}/>
-       </section>
+
+           <article className='rating'>
+            <div className='rating-frame'>
+             <div className='rating-container'>
+              <h2>Reviews & Ratings</h2>
+              <figure className='rating-figure'>
+              <div className='rating-box' >
+                <p className=' rating-number p1'>5 Stars</p>
+                <img className='rating-image' src={block1} alt="rating block" />
+
+              </div>
+              <div className='rating-box' >
+                <p className=' rating-number p1'>4 Stars</p>
+                <img className='rating-image' src={block4} alt="rating block" />
+              </div>
+              <div className='rating-box' >
+                 <p className=' rating-number p1'>3 Stars</p>
+                 <img className='rating-image' src={block3} alt="rating block" />
+              </div>
+              <div className='rating-box' >
+              <p className=' rating-number p1'>2 Stars</p>
+              <img className='rating-image' src={block3} alt="rating block" />
+              </div>
+              <div className='rating-box' >
+                <p className=' rating-number p1'>1 Stars</p>
+                <img className='rating-image' src={block4} alt="rating block" />
+
+              </div>
+
+              </figure>
+             
+            </div>
+              <div className='rating-wrap'>
+                <h2>Overall Rating</h2>
+                <div className='rating-svgBox'>
+                    <p>4.5</p>
+                  <div className="details-svg">
+                      <FilledRating/>
+                      <FilledRating/>
+                      <FilledRating/>
+                      <FilledRating/>
+                      <RatingSvg/>
+                  </div>
+                    
+                </div>
+                <button onClick={ toggleModal} className='rating-btn'>Add a review</button>
+              </div>
+            </div>
+           
+          </article>
+          </section>
+         
+          
+        
+      </>
+       
     )
 }
 export default ProductDetailsPage;
