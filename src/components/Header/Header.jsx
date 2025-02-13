@@ -27,7 +27,7 @@ function Header({toggleSideBar, toggleCart}){
                     <li className="header-item"><SearchSvg /></li>
                 </ul>
            
-            <p className="header-logo">Arewa</p>
+            <p className="header-logo"><Link to='/' className="header-logo">Arewa</Link></p>
            
                 <ul className="header-list__right">
                     <li className="header-item"><HeartSvg /></li>

@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductItem from '../../components/ProductItem/ProductItem.jsx';
 import block1 from '../../assets/images/block1.png'
-import block2 from '../../assets/images/block2.png'
 import block3 from '../../assets/images/block3.png'
 import block4 from '../../assets/images/block4.png';
 import FilledRating from '../../svgs/FilledRating/FilledRating.jsx';
 import RatingSvg from '../../svgs/RatingSvg/RatingSvg.jsx';
 import FormModal from '../../components/FormModal/FormModal.jsx'
+import Reviews from '../../components/Reviews/Reviews.jsx'
 import axios from "axios";
 function ProductDetailsPage(props){
       const [details,setDetails] = useState({});
@@ -22,17 +22,6 @@ function ProductDetailsPage(props){
         setOpenModal((prev)=> !prev)
       }
 
-      // function toggleOpenModal(){
-      //      setOpenModal(!openModal)
-      //       if(openModal){
-      //         setCloseModal(true);
-      //       }
-      // }
-      // function toggleCloseModal(){
-      //   if(closeModal){
-      //     setOpenModal(true);
-      //   }
-      // }
 
       useEffect(()=>{
 
@@ -109,7 +98,7 @@ function ProductDetailsPage(props){
            
           </article>
           </section>
-         
+          <Reviews details={details}/>
           
         
       </>

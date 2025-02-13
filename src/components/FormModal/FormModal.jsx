@@ -2,6 +2,8 @@ import './FormModal.scss'
 import CancelSvg from '../../svgs/CancelSvg/CancelSvg';
 function FormModal({toggleModal}){
 
+    
+
     return(
         <article className="modal">
             <div className="modal-container">
