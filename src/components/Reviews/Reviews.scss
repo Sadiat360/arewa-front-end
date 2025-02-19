@@ -20,11 +20,14 @@
        
 
     }
+    &-details{
+        width: 100%;
+    }
 
     &-frame{
         width: 100%;
         @include flex-center(column);
-        border-bottom: 1px solid $light-brown;
+        // border-bottom: 1px solid $light-brown;
 
         @include tablet{
            

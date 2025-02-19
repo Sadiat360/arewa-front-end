@@ -8,10 +8,14 @@ import block4 from '../../assets/images/block4.png';
 import FilledRating from '../../svgs/FilledRating/FilledRating.jsx';
 import RatingSvg from '../../svgs/RatingSvg/RatingSvg.jsx';
 import FormModal from '../../components/FormModal/FormModal.jsx'
-import Reviews from '../../components/Reviews/Reviews.jsx'
+import Reviews from '../../components/Reviews/Reviews.jsx';
+// import { getStorage, ref,uploadBytes,getDownloadURL } from '../../firebase.js';
+import { storage } from '../../firebase.js';
 import axios from "axios";
+import {ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 function ProductDetailsPage(props){
       const [details,setDetails] = useState({});
+      const [reviews, setReviews] = useState([])
       const {slug} = useParams();
       console.log('what is id', slug)
       const [openModal, setOpenModal] = useState(false);
@@ -21,8 +25,6 @@ function ProductDetailsPage(props){
       function toggleModal(){
         setOpenModal((prev)=> !prev)
       }
-
-
       useEffect(()=>{
 
         async function getBestSeller() {
@@ -39,15 +41,61 @@ function ProductDetailsPage(props){
             getBestSeller();
           }
 
-      }, [slug])
+      }, [slug]);
+
+     useEffect(()=>{
+
+      async function getReviews(){
+        try{
+            const response = await axios.get(`http://localhost:5050/bestseller/${slug}/reviews`)
+            console.log('reviews fetched', response.data)
+            setReviews(response.data)
+        } catch (error){
+           console.error('Error getting reviews', error)
+        }
+      }
+      getReviews()
      
 
+     }, [slug]);
+
+     
+      async function postReview(newReview) {
+
+        try{
+          const response = await axios.post(`http://localhost:5050/bestseller/${slug}/reviews`,newReview);
+          console.log('review posted', response.data)
+          setReviews((reviews)=> [response.data.data, ...reviews])
+        }catch(error){
+          console.error('Error posting review')
+        }
+        
+      }
+       
+
+     const handleFormSubmit = async ({user,comment,file}) =>{
+       const storageRef = ref(storage, `reviews/images/ ${file.name }`)
+       await uploadBytes(storageRef, file);
+        
+       // Get the download URL of the uploaded image
+       const image = await getDownloadURL(storageRef);
+  
+        const newReview ={ 
+          user: user,
+          comment: comment,
+          image: image,
+          createdAt: new Date(),
+        }
+      console.log('review button clicked');
+     
+      postReview(newReview)
+       
+     }
     return(
       <>
-          {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal}/>): null}
+          {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal} handleFormSubmit={handleFormSubmit}/>): null}
           <section className="details">    
            <ProductItem  details={details}/>
-
            <article className='rating'>
             <div className='rating-frame'>
              <div className='rating-container'>
@@ -56,7 +104,6 @@ function ProductDetailsPage(props){
               <div className='rating-box' >
                 <p className=' rating-number p1'>5 Stars</p>
                 <img className='rating-image' src={block1} alt="rating block" />
-
               </div>
               <div className='rating-box' >
                 <p className=' rating-number p1'>4 Stars</p>
@@ -98,7 +145,7 @@ function ProductDetailsPage(props){
            
           </article>
           </section>
-          <Reviews details={details}/>
+          <Reviews reviews={reviews}/>
           
         
       </>

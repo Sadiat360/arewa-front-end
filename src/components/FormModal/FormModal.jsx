@@ -1,6 +1,39 @@
 import './FormModal.scss'
 import CancelSvg from '../../svgs/CancelSvg/CancelSvg';
-function FormModal({toggleModal}){
+import { useState } from 'react';
+
+function FormModal({toggleModal,handleFormSubmit}){
+    const [formValues,setFormValues] = useState({user:'', comment:'', file: null})
+    // console.log(formValues)
+
+   
+
+    function handleInputChange(event){
+        const{ name,value} = event.target;
+
+        if(formValues === ''){
+            alert('All input fields must be filled');
+        }
+
+        setFormValues ({
+            ...formValues,
+            [name]: value,
+        }) 
+
+    }
+    function handleFileChange(event){
+        setFormValues({
+            ...formValues,
+            file: event.target.files[0]
+        })
+    }
+    function onSubmit(event){
+        event.preventDefault();
+        handleFormSubmit(formValues);
+
+        setFormValues({user:'', comment:'',file:''})
+       
+    }
 
     
 
@@ -12,18 +45,36 @@ function FormModal({toggleModal}){
                 <button className='modal-close' onClick={toggleModal}><CancelSvg /></button>
                 </div>
                 
-                <form className="modal-form" action="">
+                <form onSubmit={onSubmit}className="modal-form" action="" >
                     <div className='modal-box'>
                     <label className='modal-label h3' htmlFor="name">Review Title</label>
-                    <input className='modal-input' type="text" name="" id="" />
+                    <input className='modal-input' 
+                    onChange={handleInputChange}
+                    type="text" 
+                    name="user" 
+                    id=""
+                    value={formValues.user} />
                     </div>
                     <div className='modal-box'>
                     <label className='modal-label h3' htmlFor="">Review</label>
-                    <textarea  className='modal-input'name="comment" id="" rows={10}></textarea>
+                    <textarea  
+                    className='modal-input'
+                    onChange={handleInputChange}
+                    name="comment"
+                    id="" 
+                    rows={10}
+                    value={formValues.comment}
+                    ></textarea>
                     </div>
                    <div className='modal-box'>
                    <label className='modal-label h3' htmlFor="">Add image</label>
-                   <input className='modal-input' type="file" />
+                   <input className='modal-input'
+                   onChange={handleFileChange}
+                    type='file'
+                    accept='image/*'
+                    oncChange={handleFileChange}
+                    // value={formValues.reviewImage}
+                     />
 
                    </div>
                   <button className='modal-btn'>Post Review</button>
