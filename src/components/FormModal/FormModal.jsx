@@ -41,7 +41,7 @@ function FormModal({toggleModal,handleFormSubmit}){
         <article className="modal">
             <div className="modal-container">
                 <div className='modal-header'>
-                <h2 className='h2'>Rate Product</h2>
+                <h2 className='modal-heading h2'>Rate Product</h2>
                 <button className='modal-close' onClick={toggleModal}><CancelSvg /></button>
                 </div>
                 
@@ -77,7 +77,7 @@ function FormModal({toggleModal,handleFormSubmit}){
                      />
 
                    </div>
-                  <button className='modal-btn'>Post Review</button>
+                  <button className='modal-form__btn'>Post Review</button>
 
 
                 </form>

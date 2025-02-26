@@ -2,7 +2,13 @@ import './Reviews.scss'
 import FilledRating from '../../svgs/FilledRating/FilledRating';
 import RatingSvg from '../../svgs/RatingSvg/RatingSvg';
 import {formatDate} from '../../utils/utils.jsx'
-function Reviews({reviews}){
+import LikeSvg from '../../svgs/LikeSvg/LikeSvg.jsx';
+import DisLikeSvg from '../../svgs/DisLikeSvg/DisLikeSvg.jsx';
+import TrashSvg from '../../svgs/TrashSvg/TrashSvg.jsx';
+
+function Reviews({reviews,handleReviewLike, handleUnlikeClick,deleteReview}){
+   
+  
     return(
         <section className='review'>
             {reviews?.map ((element, reviewsIndex)=>
@@ -23,6 +29,13 @@ function Reviews({reviews}){
                            </div>
                            {/* <p>{element.rating}</p> */}
                            <p className='review-comment p1'>{element.comment}</p>
+                         <div className='review-icon'>
+                          <div className='review-like__wrap'> 
+                          <button onClick={()=> handleReviewLike(element.id)} className='review-like__btn'><LikeSvg/><span>{element.like}</span></button> 
+                           <button onClick={()=> handleUnlikeClick(element.id)} className='review-like__btn'><DisLikeSvg/>{element.unlike}</button>
+                          </div>
+                          <button onClick={()=> deleteReview(element.id)} className='review-delete'><TrashSvg/></button>
+                         </div>
                          </div>
                         <div className='review-image__wrap'>
                          {element.image ?( 
@@ -36,10 +49,7 @@ function Reviews({reviews}){
                         </div>  
                        
                        </div>
-                       <div className='review-box'>
-                          <h3 className='review-user h3'>icon</h3>
-                          <p className='p1'>icon 2</p>
-                        </div>
+                       
 
                     </div>
             )}

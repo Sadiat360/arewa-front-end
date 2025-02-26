@@ -10,13 +10,18 @@
    
     &-container{
         width: 100%;
+        // height: 1000px;
         @include flex-center(column);
-        overflow: hidden;
-           
+        
+       
 
         @include tablet{
+            height: 500px;
             @include flex-center(row);
             justify-content: space-between;
+            overflow: hidden;
+      
+           
            
         }
     }
@@ -36,9 +41,10 @@
     &-content{
         width: 90%;
         list-style: none;
-        overflow-y: auto;
+       
         @include tablet{
             width: 45%;
+            overflow-y: auto;
            
           
         }
@@ -108,15 +114,15 @@
     &-ingredient{
         width: 100%;
         margin-top: 1rem;
-        // background-color: red;
         @include flex-center(row);
         justify-content: space-between;
+        align-items: center;
         border-top: 1px solid $light-brown;
-        // border-bottom: 1px solid $light-brown;
         padding-bottom: 1rem;
 
         &__text{
             margin-left: 0;
+            margin-top: 1rem;
         }
        
     }
@@ -125,16 +131,44 @@
         
     }
     &-plusBtn{
+        width: 10%;
+        margin-right: 0;
         background: transparent;
-       border: none;
+        border: none;
+        margin-top: 1rem;
+    }
+    &-scroll__mob{
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+
+    }
+    &-howToUse{
+        display: none;
+        @include tablet{
+            height: 600px;
+            @include flex-center(column);
+            overflow-y: auto;
+
+        }
+        
+    }
+    &-howToUse__mob{
+            height: 200px;
+            overflow-y: auto;
+        @include tablet{ 
+            display: none;
+        }
+    }
+    &-quantity{
+        padding-left: 1rem;
+        // padding-right: 1rem;
     }
 
 }
 
 .rating{
     width: 100%;
-    // padding-top: 1rem;
-    // background-color: red;
 
     @include tablet{
         margin-top: 0;
@@ -188,8 +222,10 @@
     &-svgBox{
         width: 50%;
         @include flex-center(row);
+        align-items: center;
         align-items: flex-start;
         padding-top: 1rem;
+      
     }
     &-wrap{
         width: 80%;

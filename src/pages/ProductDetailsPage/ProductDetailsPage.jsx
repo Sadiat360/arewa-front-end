@@ -18,8 +18,10 @@ function ProductDetailsPage(props){
       const [reviews, setReviews] = useState([])
       const {slug} = useParams();
       console.log('what is id', slug)
+
       const [openModal, setOpenModal] = useState(false);
-      const [closeModal, setCloseModal] = useState(false);
+      const {reviewId }= useParams();
+      console.log('what is reviewId:', reviewId)
       
 
       function toggleModal(){
@@ -91,6 +93,69 @@ function ProductDetailsPage(props){
       postReview(newReview)
        
      }
+
+     async function putLikes(reviewId) {
+         try{
+           if(!reviewId){
+            throw new Error('Missing reviewId')
+           }
+           const response = await axios.put(`http://localhost:5050/bestseller/${slug}/reviews/${reviewId}/like`)
+           console.log('review likes incremented', response.data)
+           setReviews(reviews => reviews.map(
+            review => review.id === reviewId ?
+          {...review, like: (review.like ||0) + 1} : review))
+         }catch(error){
+           console.error('Unable to update like')
+         }
+        
+       }
+      
+
+    const handleReviewLike = async(reviewId)=>{
+      if(!reviewId){
+        console.error('Invalid reviewId:', reviewId);
+        return
+      }
+      console.log('like button clicked with ID:', reviewId)
+      await putLikes(reviewId); 
+    }
+
+    async function putUnLike(reviewId) {
+           try{
+            const response = await axios.put(`http://localhost:5050/bestseller/${slug}/reviews/${reviewId}/unlike`)
+            console.log('Unlike response:', response.data)
+            setReviews(reviews => reviews.map(review => review.id === reviewId?
+              {...review, unlike: (review.unlike || 0)+1} : review
+            ))
+           }catch (error){
+            console.error('Error updating dislike')
+           }
+    }
+    const handleUnlikeClick = async(reviewId)=>{
+      if(!reviewId){
+        console.log('Invalid reviewId', reviewId)
+        return
+      }
+      console.log('Unlike button clicked with ID:', reviewId)
+      await putUnLike(reviewId)
+    }
+    async function deleteReview(reviewId) {
+       try{
+        const response = await axios.delete(`http://localhost:5050/bestseller/${slug}/reviews/${reviewId}`);
+        console.log('Delete review response:', response.data)
+        setReviews(reviews => reviews.filter((review => review.id !== reviewId )));
+       } catch (error){
+         console.error('Error deleting review')
+       }
+         
+    }
+    // const handleDelete = async(reviewId)=>{
+    //   if(!reviewId){
+    //     console.log('Invalid reviewId', reviewId)
+    //     return
+    //   }
+    //   await deleteReview(reviewId)
+    // }
     return(
       <>
           {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal} handleFormSubmit={handleFormSubmit}/>): null}
@@ -99,7 +164,7 @@ function ProductDetailsPage(props){
            <article className='rating'>
             <div className='rating-frame'>
              <div className='rating-container'>
-              <h2>Reviews & Ratings</h2>
+              <h2 className='h2'>Reviews & Ratings</h2>
               <figure className='rating-figure'>
               <div className='rating-box' >
                 <p className=' rating-number p1'>5 Stars</p>
@@ -129,7 +194,7 @@ function ProductDetailsPage(props){
               <div className='rating-wrap'>
                 <h2>Overall Rating</h2>
                 <div className='rating-svgBox'>
-                    <p>4.5</p>
+                    <p >4.5</p>
                   <div className="details-svg">
                       <FilledRating/>
                       <FilledRating/>
@@ -145,7 +210,7 @@ function ProductDetailsPage(props){
            
           </article>
           </section>
-          <Reviews reviews={reviews}/>
+          <Reviews reviews={reviews} handleReviewLike={handleReviewLike} handleUnlikeClick={handleUnlikeClick} deleteReview={deleteReview}/>
           
         
       </>
