@@ -1,4 +1,4 @@
-
+import './CartTab.scss'
 
 function CartTab(){
     return(

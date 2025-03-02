@@ -1,7 +1,7 @@
 import './ProductDetailsPage.scss'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductItem from '../../components/ProductItem/ProductItem.jsx';
+import ProductDetailsItem from '../../components/ProductDetailsItem/ProductDetailsItem.jsx';
 import block1 from '../../assets/images/block1.png'
 import block3 from '../../assets/images/block3.png'
 import block4 from '../../assets/images/block4.png';
@@ -9,19 +9,37 @@ import FilledRating from '../../svgs/FilledRating/FilledRating.jsx';
 import RatingSvg from '../../svgs/RatingSvg/RatingSvg.jsx';
 import FormModal from '../../components/FormModal/FormModal.jsx'
 import Reviews from '../../components/Reviews/Reviews.jsx';
-// import { getStorage, ref,uploadBytes,getDownloadURL } from '../../firebase.js';
 import { storage } from '../../firebase.js';
 import axios from "axios";
 import {ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTocart } from '../../store/Cart.jsx';
+
 function ProductDetailsPage(props){
       const [details,setDetails] = useState({});
+      console.log('details:', details)
       const [reviews, setReviews] = useState([])
       const {slug} = useParams();
       console.log('what is id', slug)
+     
 
       const [openModal, setOpenModal] = useState(false);
       const {reviewId }= useParams();
       console.log('what is reviewId:', reviewId)
+      const carts = useSelector((store => store.cart.items))
+      const dispatch = useDispatch()
+
+      function handleAddToCartClick(){
+        if(!details.id){
+          console.error('Product ID is missing');
+          return;
+        }
+            dispatch(addTocart({
+              productId: details.id,
+              qauntity: 1
+            }))
+            console.log('Add to cart button clicked');
+      }
       
 
       function toggleModal(){
@@ -160,7 +178,7 @@ function ProductDetailsPage(props){
       <>
           {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal} handleFormSubmit={handleFormSubmit}/>): null}
           <section className="details">    
-           <ProductItem  details={details}/>
+           <ProductDetailsItem   details={details} handleAddToCartClick={handleAddToCartClick}/>
            <article className='rating'>
             <div className='rating-frame'>
              <div className='rating-container'>

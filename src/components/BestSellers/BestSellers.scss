@@ -30,9 +30,6 @@
         border-radius: 5px;
         @include flex-center(column);
         @include box-shadow;
-        
-        
-
     }
     &-image__wrap{
         width: 100%;
@@ -51,9 +48,6 @@
         justify-content: center;
         align-items: center;
         margin-left: 0;
-        // padding-left: 0px;
-        // background-color: rgb(212, 255, 0);
-       
 
         &__box{
             width: 60%;
@@ -63,14 +57,30 @@
             margin-left: 0;
         }
     }
+    &-price{
+        font-weight: 600;
+    }
+    &-list{
+        list-style: none;
+        font-weight: 600;
+        &__description{
+            @extend .bestSeller-list;
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+    &-list__wrap{
+        // background-color: aqua;
+        margin-left: 0;
+    }
     &-container{
         width: 100%;
         @include flex-center(row);
         justify-content: space-between;
         align-items: center;
-        padding-left: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
         padding-top: 1rem;
-        // background-color: red;
     
     }
     &-btn{

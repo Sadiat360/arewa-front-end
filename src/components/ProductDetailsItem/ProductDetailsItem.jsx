@@ -1,15 +1,27 @@
-import FilledRating from "../../svgs/FilledRating/FilledRating";
-import RatingSvg from "../../svgs/RatingSvg/RatingSvg";
+import FilledRating from "../../svgs/FilledRating/FilledRating.jsx";
+import RatingSvg from "../../svgs/RatingSvg/RatingSvg.jsx";
 import HeartSvg from '../../svgs/HeartSvg/HeartSvg.jsx';
 import { useState } from "react";
 import AddSvg from "../../svgs/AddSvg/AddSvg.jsx";
 import MinusSvg from "../../svgs/MinusSvg/MinusSvg.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { addTocart } from "../../store/Cart.jsx";
 
-function ProductItem({details}){
+function ProductDetailsItem ({details, handleAddToCartClick}){
 
     console.log('product item received details', details)
     const [openHowToUse, setOpenHowToUse] = useState(false);
     const [openIngredient, setOpenIngredient] = useState(false);
+    // const carts = useSelector((store => store.cart.items))
+    // const dispatch = useDispatch();
+
+    // function handleAddToCartClick(){
+    //      dispatch(addTocart({
+    //         productId: id,
+    //         quantity: 1
+    //      }))
+    //      console.log('Add to cart btn clicked')
+    // }
 
     function handleIngredientClick(){
         setOpenIngredient(!openIngredient)
@@ -50,10 +62,10 @@ function ProductItem({details}){
                 <h2 className="h2">{details.price}</h2>
 
                 <div className="details-btn__box">
-                    <button className="details-btn__add">Add to cart</button>
+                    <button onClick={handleAddToCartClick} className="details-btn__add">Add to cart</button>
                     <button className="details-btn "><MinusSvg/></button>
                     <p className="details-quantity p1">1</p>
-                    <button className="details-btn "><AddSvg/></button>
+                    <button  className="details-btn "><AddSvg/></button>
                 </div>
 
                 <h3>Details</h3>
@@ -99,4 +111,4 @@ function ProductItem({details}){
         </div>
     )
 }
-export default ProductItem;
+export default ProductDetailsItem;
