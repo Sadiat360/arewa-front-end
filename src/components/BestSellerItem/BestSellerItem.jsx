@@ -2,7 +2,7 @@ import RatingSvg from '../../svgs/RatingSvg/RatingSvg.jsx'
 import FilledRating from '../../svgs/FilledRating/FilledRating.jsx';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTocart } from '../../store/Cart.jsx';
+import { addToCart } from '../../store/Cart.jsx';
 
 function BestSellerItem(props){
     const carts = useSelector(store => store.cart.items);
@@ -12,7 +12,7 @@ function BestSellerItem(props){
     const dispatch = useDispatch();
 
     function handleAddToCart(){
-        dispatch(addTocart({
+        dispatch(addToCart({
             productId: id,
             quantity: 1
         }))

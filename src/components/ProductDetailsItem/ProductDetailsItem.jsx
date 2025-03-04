@@ -5,23 +5,24 @@ import { useState } from "react";
 import AddSvg from "../../svgs/AddSvg/AddSvg.jsx";
 import MinusSvg from "../../svgs/MinusSvg/MinusSvg.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { addTocart } from "../../store/Cart.jsx";
+import { addToCart } from "../../store/Cart.jsx";
 
-function ProductDetailsItem ({details, handleAddToCartClick}){
+function ProductDetailsItem ({details}){
 
     console.log('product item received details', details)
     const [openHowToUse, setOpenHowToUse] = useState(false);
     const [openIngredient, setOpenIngredient] = useState(false);
-    // const carts = useSelector((store => store.cart.items))
-    // const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(1)
+    const carts = useSelector(store => store.cart.items)
+    const dispatch = useDispatch();
 
-    // function handleAddToCartClick(){
-    //      dispatch(addTocart({
-    //         productId: id,
-    //         quantity: 1
-    //      }))
-    //      console.log('Add to cart btn clicked')
-    // }
+    function handleAddToCartClick(){
+         dispatch(addToCart({
+            productId: details.id,
+            quantity: quantity,
+         }))
+         console.log(`Added ${quantity} item(s) to cart`)
+    }
 
     function handleIngredientClick(){
         setOpenIngredient(!openIngredient)
@@ -35,6 +36,16 @@ function ProductDetailsItem ({details, handleAddToCartClick}){
         if(openIngredient){
             setOpenIngredient(false)
         } 
+    }
+    function handleMinusClick(){
+        if(quantity > 1){
+            setQuantity(prev => prev - 1)
+        } 
+    }
+    function handleAddClick(){
+            setQuantity(prev => prev + 1)
+      
+        console.log('Button clicked')
     }
     return(
         <div className="details-container">
@@ -63,9 +74,9 @@ function ProductDetailsItem ({details, handleAddToCartClick}){
 
                 <div className="details-btn__box">
                     <button onClick={handleAddToCartClick} className="details-btn__add">Add to cart</button>
-                    <button className="details-btn "><MinusSvg/></button>
-                    <p className="details-quantity p1">1</p>
-                    <button  className="details-btn "><AddSvg/></button>
+                    <button onClick={handleMinusClick} className="details-btn" disabled={quantity <= 1}><MinusSvg/></button>
+                    <p className="details-quantity p1">{quantity}</p>
+                    <button onClick={handleAddClick}  className="details-btn "><AddSvg/></button>
                 </div>
 
                 <h3>Details</h3>

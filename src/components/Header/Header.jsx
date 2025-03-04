@@ -5,7 +5,6 @@ import MenuSvg from '../../svgs/MenuSvg/MenuSvg';
 import SearchSvg from '../../svgs/SearchSvg/SearchSvg';
 import SideBar from '../SideBar/SideBar';
 import { Link} from 'react-router-dom';
-import { addTocart } from '../../store/Cart';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 

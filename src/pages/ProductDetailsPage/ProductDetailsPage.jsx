@@ -13,7 +13,7 @@ import { storage } from '../../firebase.js';
 import axios from "axios";
 import {ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTocart } from '../../store/Cart.jsx';
+import { addToCart } from '../../store/Cart.jsx';
 
 function ProductDetailsPage(props){
       const [details,setDetails] = useState({});
@@ -26,7 +26,8 @@ function ProductDetailsPage(props){
       const [openModal, setOpenModal] = useState(false);
       const {reviewId }= useParams();
       console.log('what is reviewId:', reviewId)
-      const carts = useSelector((store => store.cart.items))
+      const carts = useSelector(store => store.cart.items);
+      console.log('details page cart:',carts)
       const dispatch = useDispatch()
 
       function handleAddToCartClick(){
@@ -34,14 +35,13 @@ function ProductDetailsPage(props){
           console.error('Product ID is missing');
           return;
         }
-            dispatch(addTocart({
-              productId: details.id,
-              qauntity: 1
-            }))
-            console.log('Add to cart button clicked');
+       dispatch(addToCart({
+         productId: details.id,
+         qauntity: 1
+       }))
+       console.log('Add to cart button clicked');
       }
       
-
       function toggleModal(){
         setOpenModal((prev)=> !prev)
       }
@@ -128,7 +128,6 @@ function ProductDetailsPage(props){
         
        }
       
-
     const handleReviewLike = async(reviewId)=>{
       if(!reviewId){
         console.error('Invalid reviewId:', reviewId);
