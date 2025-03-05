@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 function CartTab({details}){
-    const [details, setDetails] = useState()
-    // const [cartItem, setCartItem] = useState()
+    // const [details, setDetails] = useState()
+    // // const [cartItem, setCartItem] = useState()
     // const carts = useSelector(store => store.cart.items)
     // console.log('what is inside cartTab carts:', carts)
     return(
