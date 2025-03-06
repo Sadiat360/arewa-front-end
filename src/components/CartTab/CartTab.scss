@@ -2,3 +2,12 @@
 @use '/src/styles/mixins' as *;
 @use '/src/styles/typography' as *;
 @use '/src/styles/variables' as *;
+
+.cartTab{
+    background-color: red;
+    width: 80%;
+    height: 100%;
+    position: fixed;
+    top: 55px;
+    right: 10px;
+}
