@@ -1,0 +1,56 @@
+@use '/src/styles/global' as *;
+@use '/src/styles/mixins' as *;
+@use '/src/styles/typography' as *;
+@use '/src/styles/variables' as *;
+
+.cartItem{
+    background-color: $white-color;
+    @include flex-center(row);
+    @include box-shadow;
+    margin-top: 1rem;
+    border: 1px solid $Arewa-brown;
+    border-radius: 5px;
+    @include tablet{
+        width: 70%;
+    }
+
+    &-box{
+        width: 45%;
+        padding: 0.5rem;
+       
+        // margin-left: 0;
+        // background-color: red;
+    }
+    &-image{
+        width: 100%;
+        border-radius: 5px;
+    }
+    &-content{
+        width: 45%;
+        padding: 0.5rem;
+        @include flex-center (column);
+        // background-color: red;
+    }
+    &-minusBtn{
+        width: 15%;
+        padding: 8px 10px 8px 10px;
+        background-color: $white-color;
+        border: 2px solid $Arewa-brown;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 3rem;
+    }
+    &-plusBtn{
+        @extend .cartItem-minusBtn;
+    }
+    &-text__frame{
+        width: 100%;
+    }
+    &-btn__box{
+        width: 100%;
+        @include flex-center(row);
+        align-items: center;
+        // background-color: aqua;
+
+    }
+}

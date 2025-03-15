@@ -41,7 +41,7 @@ function Header({toggleSideBar, toggleCart}){
                 <ul className="header-list__right">
                     <li className="header-item"><HeartSvg /></li>
                     <div className='header-cartwrap'>
-                       <li  onClick={toggleCart}className="header-item"><CartSvg /></li>
+                       <li  onClick={toggleCart}className="header-item"><Link to='/cart'><CartSvg /></Link></li>
                        <span className='header-quantity'>{totalQuantity}</span>
                     </div>
                    
@@ -51,7 +51,7 @@ function Header({toggleSideBar, toggleCart}){
        
         <div className="header-container">
            
-            <p className="header-logo"> <Link  className="header-logo" to='/'>Arewa </Link></p>
+            <p className="header-logo"> <Link to='/' className="header-logo">Arewa</Link></p>
            
                 <ul className="header-list">
                 <li className="header-item"><HeartSvg /></li>
