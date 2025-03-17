@@ -35,8 +35,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/:slug' element={<ProductDetailsPage/>}/>
-      {isCartOpen && 
-      <Route path='/cart' element={<CartTab/>} />}
+      <Route path='/cart' element={<CartTab/>} />
 
              
 

@@ -17,6 +17,8 @@ function CartTab(){
             {carts.map((item, key)=>
                 <CartItem key={key} data={item}/>
             )} 
+
+            <button className='cartTab-checkout'>Checkout</button>
         </section> 
         </>
     )

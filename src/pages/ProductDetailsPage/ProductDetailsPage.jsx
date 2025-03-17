@@ -74,9 +74,7 @@ function ProductDetailsPage(props){
            console.error('Error getting reviews', error)
         }
       }
-      getReviews()
-     
-
+      getReviews();
      }, [slug]);
 
      
@@ -91,8 +89,6 @@ function ProductDetailsPage(props){
         }
         
       }
-       
-
      const handleFormSubmit = async ({user,comment,file}) =>{
        const storageRef = ref(storage, `reviews/images/ ${file.name }`)
        await uploadBytes(storageRef, file);

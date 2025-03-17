@@ -67,7 +67,7 @@ function BestSellers(props){
                         <BestSellerItem key={item.id} data={item} />
                     ))
                 ) : (
-                    <p>No best sellers available.</p> // ✅ Show this if API returns an empty array
+                    <p className='p1'>No best sellers available.</p> // ✅ Show this if API returns an empty array
                 )}
             </Carousel>
            
