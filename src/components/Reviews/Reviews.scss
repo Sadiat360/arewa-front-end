@@ -5,20 +5,18 @@
 
 .review{
     width: 100%;
+    @include body-padding-mob;
+
+    @include tablet{
+        width: 100%;
+        @include body-padding-tab;
+    }
 
     &-container{
         width: 100%;
         @include flex-center(column);
         border-bottom: 1px solid $light-brown;
-        // background-color: red;
-        
-
-        @include tablet{
-            width: 100%;
-            // @include flex-center(row);
-        }
-       
-
+        padding-left: 1rem;
     }
     &-details{
         width: 100%;
@@ -27,7 +25,6 @@
     &-frame{
         width: 100%;
         @include flex-center(column);
-        // border-bottom: 1px solid $light-brown;
 
         @include tablet{
            
@@ -37,13 +34,14 @@
     }
     &-box{
         width: 100%;
-        @include flex-center(row);
-        align-items: center;
-        padding-left: 2rem;
         color: $Arewa-black;
         margin-top: 1rem;
-       
-        // background-color: red;
+
+        @include tablet{
+            @include flex-center(row);
+            align-items: center;
+            padding-left: 1rem;
+        }
     }
     &-user{
         width: 50%;
@@ -52,11 +50,11 @@
     &-content{
         width: 100%;
         @include flex-center(column);
-        padding-left: 2rem;
       
         @include tablet{
             width: 50%;
             margin-left: 0;
+            padding-left: 1rem;
         }
     }
     &-image__wrap{
@@ -71,7 +69,6 @@
         @include tablet{
             width: 20%;
         }
-       
     }
     &-comment{
         margin-left: 0;

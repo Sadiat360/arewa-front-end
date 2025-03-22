@@ -162,13 +162,6 @@ function ProductDetailsPage(props){
        }
          
     }
-    // const handleDelete = async(reviewId)=>{
-    //   if(!reviewId){
-    //     console.log('Invalid reviewId', reviewId)
-    //     return
-    //   }
-    //   await deleteReview(reviewId)
-    // }
     return(
       <>
           {openModal === true ? (<FormModal setOpenModal={setOpenModal} toggleModal={toggleModal} handleFormSubmit={handleFormSubmit}/>): null}
@@ -205,9 +198,9 @@ function ProductDetailsPage(props){
              
             </div>
               <div className='rating-wrap'>
-                <h2>Overall Rating</h2>
+                <h2 className='h2'>Overall Rating</h2>
                 <div className='rating-svgBox'>
-                    <p >4.5</p>
+                    <p>4.5</p>
                   <div className="details-svg">
                       <FilledRating/>
                       <FilledRating/>

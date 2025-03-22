@@ -6,8 +6,6 @@ function FormModal({toggleModal,handleFormSubmit}){
     const [formValues,setFormValues] = useState({user:'', comment:'', file: null})
     // console.log(formValues)
 
-   
-
     function handleInputChange(event){
         const{ name,value} = event.target;
 
@@ -34,8 +32,6 @@ function FormModal({toggleModal,handleFormSubmit}){
         setFormValues({user:'', comment:'',file:''})
        
     }
-
-    
 
     return(
         <article className="modal">
@@ -78,8 +74,6 @@ function FormModal({toggleModal,handleFormSubmit}){
 
                    </div>
                   <button className='modal-form__btn'>Post Review</button>
-
-
                 </form>
             </div>
         </article>

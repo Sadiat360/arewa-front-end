@@ -25,8 +25,6 @@ function CartItem({data}){
             }catch(error){
                 console.error('Error fetching product details:', error)
             }
-            
-     
          }
          getBestSellerDetail()
        
@@ -46,6 +44,20 @@ function CartItem({data}){
     function handleAddClick(){
         setQuantity(prev => prev + 1)
     }
+    // useEffect(()=> {
+    //     async function deleteProduct(){
+    //         try{
+    //             const response = await axios.delete(`http://localhost:5050/bestseller/by-id/${productId}`)
+    //             console.log('remove item response:', response.data)
+    //              setDetail(response.data)
+    //         }catch (error){
+    //             console.error('Error removing item')
+    //         }
+            
+    //     }
+    //     deleteProduct();
+    // }, [productId]);
+    
     return(
         <figure className="cartItem">
             <div className="cartItem-box">
@@ -53,15 +65,22 @@ function CartItem({data}){
             </div>
             <div className="cartItem-content">
                 <div className="cartItem-text__frame">
-                  <p>{detail.name}</p>
-                  <p>{detail.price}</p>
-
+                  <p className="p1">{detail.tags}</p>
+                  <p className="p1">{detail.name}</p>
+                  <p className="p1">{detail.price}</p>
                 </div>
-              
-              <div className="cartItem-btn__box">
+              <div className="cartItem-container">
+              <div className="cartItem-btn__wrap">
               <button onClick={handleMinusClick} className='cartItem-minusBtn p1'><MinusSvg /></button> {qauntity}
               <button  onClick={handleAddClick} className='cartItem-plusBtn p1'><AddSvg /></button>
               </div>
+              <div className="cartItem-remove">
+              <button className="cartItem-remove__btn">Remove</button>
+
+              </div>
+             
+              </div>
+             
              
             </div>
            

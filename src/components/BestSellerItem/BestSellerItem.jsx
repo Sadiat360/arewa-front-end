@@ -24,7 +24,6 @@ function BestSellerItem(props){
             <img className="bestSeller-image" src={`http://localhost:5050/images/${photo}`} alt="image" />
             </Link>   
             </div>
-            
             <div className="bestSeller-container">
               <div className="bestSeller-item">
                  <div className='bestSeller-item__box'>
@@ -38,7 +37,7 @@ function BestSellerItem(props){
                   </div>
                   <ul className='bestSeller-list__wrap'>
                   <li className="bestSeller-list p1">{name}</li>
-                  <li className="bestSeller-list__description ">{description}</li>
+                  <li className="bestSeller-list__description">{description}</li>
                   </ul>    
               </div>
               <p className='bestSeller-price p1'>{price}</p>

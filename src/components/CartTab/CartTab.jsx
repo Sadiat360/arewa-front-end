@@ -13,12 +13,14 @@ function CartTab(){
     return(
         <>
          <section className='cartTab'>
-            <h2 className='h2'>Shopping Cart</h2>
+            <div className='cartTab-container'>
+            <h2 className=' cartTab-heading h2'>Shopping Cart</h2>
             {carts.map((item, key)=>
                 <CartItem key={key} data={item}/>
             )} 
-
             <button className='cartTab-checkout'>Checkout</button>
+            </div>
+          
         </section> 
         </>
     )

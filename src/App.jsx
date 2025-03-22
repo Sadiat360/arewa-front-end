@@ -9,21 +9,14 @@ import CartTab from './components/CartTab/CartTab.jsx';
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false)
-     
+  
       function toggleSideBar(){
           setSidebarOpen((prev) => !prev)
          
       }
-      function toggleCart (){
-          setIsCartOpen((prev)=> !prev)
-      }
 
   return (
     <>
-
-
-
     <BrowserRouter>
     {!isSidebarOpen  && <Header toggleSideBar={toggleSideBar}/>}
 

@@ -8,14 +8,13 @@ import TrashSvg from '../../svgs/TrashSvg/TrashSvg.jsx';
 
 function Reviews({reviews,handleReviewLike, handleUnlikeClick,deleteReview}){
    
-  
     return(
         <section className='review'>
             {reviews?.map ((element, reviewsIndex)=>
                   <div key={reviewsIndex} className='review-container'>
                       
                        <div className='review-box'>
-                          <h3 className='review-user h3'>{element.user}</h3>
+                          <h2 className='review-user h2'>{element.user}</h2>
                           <p className='p1'>{formatDate(element.timestamp)}</p>
                         </div>
                        <div className='review-frame'>
@@ -45,12 +44,8 @@ function Reviews({reviews,handleReviewLike, handleUnlikeClick,deleteReview}){
                            : `http://localhost:5050/images/${element.image}`} alt="user review" />
                            
                        ) : null}
-                        
                         </div>  
-                       
                        </div>
-                       
-
                     </div>
             )}
             

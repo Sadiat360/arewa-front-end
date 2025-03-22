@@ -173,16 +173,17 @@
     @include tablet{
         margin-top: 0;
         padding-top: 5rem;
+        @include body-padding-tab;
     }
 
     &-frame{
         width: 100%;
         padding: 1rem;
-       
         @include flex-center(column);
 
         @include tablet{
             @include flex-center(row);
+            justify-content: space-between;
         }
 
     }
@@ -234,7 +235,8 @@
         padding-left: 0;
 
         @include tablet{
-            width: 30%;
+            width: 45%;
+            margin-right: 0;
 
         }
         
